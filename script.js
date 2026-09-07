@@ -72,6 +72,46 @@ document.addEventListener('DOMContentLoaded', function () {
     burger.addEventListener('click', function () {
       navLinks.classList.toggle('active');
     });
+
+    // Auto-close menu when a link inside mobile nav is clicked
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('active');
+      });
+    });
+  }
+
+  // Touch Device Handler for Team Cards Popup Overlay
+  var teamCards = document.querySelectorAll('.team-framer-card');
+  teamCards.forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      // Don't toggle card popup if clicking on a social button link
+      if (e.target.closest('.framer-social-btn')) return;
+
+      var isActive = card.classList.contains('is-touch-active');
+      teamCards.forEach(function (c) { c.classList.remove('is-touch-active'); });
+      if (!isActive) {
+        card.classList.add('is-touch-active');
+      }
+    });
+  });
+
+  // Team Dropdown Toggle (Show 3 default, expand remaining 1)
+  var toggleTeamBtn = document.getElementById('toggleTeamBtn');
+  var teamDropdownWrap = document.getElementById('teamDropdownWrap');
+  var toggleTeamText = document.getElementById('toggleTeamText');
+
+  if (toggleTeamBtn && teamDropdownWrap) {
+    toggleTeamBtn.addEventListener('click', function () {
+      var isExpanded = teamDropdownWrap.classList.toggle('is-expanded');
+      toggleTeamBtn.classList.toggle('is-active', isExpanded);
+
+      if (toggleTeamText) {
+        toggleTeamText.textContent = isExpanded
+          ? 'Show Less Team Members'
+          : 'View Remaining Team Member (1)';
+      }
+    });
   }
 
   // Broken Word Shatter & Particle Effect
@@ -201,22 +241,5 @@ document.addEventListener('DOMContentLoaded', function () {
       setActiveStep(next);
     });
   }
-
-  // Team Dropdown Toggle (Show 3 default, expand remaining 4)
-  var toggleTeamBtn = document.getElementById('toggleTeamBtn');
-  var teamDropdownWrap = document.getElementById('teamDropdownWrap');
-  var toggleTeamText = document.getElementById('toggleTeamText');
-
-  if (toggleTeamBtn && teamDropdownWrap) {
-    toggleTeamBtn.addEventListener('click', function () {
-      var isExpanded = teamDropdownWrap.classList.toggle('is-expanded');
-      toggleTeamBtn.classList.toggle('is-active', isExpanded);
-
-      if (toggleTeamText) {
-        toggleTeamText.textContent = isExpanded
-          ? 'Show Less Team Members'
-          : 'View Remaining Team Member (1)';
-      }
-    });
-  }
 });
+
