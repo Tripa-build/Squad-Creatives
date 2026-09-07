@@ -792,21 +792,15 @@ section {
 .cap-tag:hover {
   background: var(--navy);
   color: #ffffff;
-  border-color: var(--navy);
+.discipline-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-@media (max-width: 920px) {
-  .services-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 14px;
-    padding-bottom: 14px;
-    margin-top: 24px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--royal) transparent;
-  }
+.discipline-mobile-title,
+.discipline-toggle-btn {
+  display: none;
 }
 
 /* How We Work: Interactive Process Workbench */
@@ -1897,62 +1891,109 @@ footer .mono {
     gap: 20px;
   }
 
-  /* What We Do Compact Mobile Row & Squeezed Cards */
+  /* What We Do Tiny Stack Accordion Layout */
   .services-section {
     padding: 56px 0;
   }
 
+  .services-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 28px;
+    overflow: visible;
+  }
+
   .discipline-card {
-    flex: 0 0 85%;
-    max-width: 320px;
-    scroll-snap-align: start;
-    border-radius: 12px;
-    background: linear-gradient(145deg, #0A1930 0%, #0F2440 100%);
-    border: 1px solid rgba(37, 99, 235, 0.3);
-    box-shadow: 0 10px 28px rgba(10, 25, 48, 0.25);
+    background: #0A1930;
+    border: 1px solid rgba(37, 99, 235, 0.22);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 14px rgba(10, 25, 48, 0.15);
   }
 
   .discipline-card::before {
     height: 2px;
-    opacity: 0.9;
+    opacity: 0.8;
   }
 
   .discipline-header {
-    padding: 12px 16px;
-    background: rgba(15, 36, 64, 0.7);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 18px;
+    background: #0F2440;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  .discipline-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
   .discipline-num {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     font-size: 11px;
     background: var(--royal);
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .discipline-mobile-title {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.01em;
   }
 
   .discipline-code {
-    font-size: 9px;
+    display: none; /* Hide code tag on mobile for clean tiny bar */
+  }
+
+  .discipline-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(96, 165, 250, 0.3);
     color: #60A5FA;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
   }
 
   .discipline-graphic {
-    display: none; /* Squeeze card by hiding heavy SVG on mobile */
+    display: none; /* Hide graphics on mobile */
   }
 
   .discipline-body {
-    padding: 16px 18px 18px;
+    max-height: 0;
+    opacity: 0;
+    padding: 0 18px;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.35s ease, padding 0.35s ease;
   }
 
   .discipline-body h3 {
-    font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 6px;
+    display: none; /* Desktop heading hidden since mobile title is in tiny header */
   }
 
   .discipline-body p {
-    font-size: 12.5px;
+    font-size: 13px;
     color: #9FB4D1;
-    line-height: 1.45;
+    line-height: 1.5;
     margin-bottom: 14px;
   }
 
@@ -1969,6 +2010,30 @@ footer .mono {
     background: rgba(37, 99, 235, 0.15);
     color: #60A5FA;
     border: 1px solid rgba(96, 165, 250, 0.25);
+  }
+
+  /* Expanded Accordion State */
+  .discipline-card.is-expanded {
+    border-color: var(--royal);
+    background: linear-gradient(145deg, #0A1930 0%, #0F2440 100%);
+    box-shadow: 0 8px 24px rgba(29, 78, 216, 0.25);
+  }
+
+  .discipline-card.is-expanded .discipline-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .discipline-card.is-expanded .discipline-body {
+    max-height: 350px;
+    opacity: 1;
+    padding: 16px 18px 20px;
+  }
+
+  .discipline-card.is-expanded .discipline-toggle-btn {
+    transform: rotate(45deg);
+    background: var(--royal);
+    color: #ffffff;
+    border-color: var(--royal);
   }
 
   /* Process Workbench Step Controls */
