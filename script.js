@@ -96,20 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // 'What We Do' Accordion Card Toggle (Mobile)
-  var disciplineCards = document.querySelectorAll('.discipline-card');
-  disciplineCards.forEach(function (card) {
-    card.addEventListener('click', function () {
-      if (window.innerWidth <= 860) {
-        var isExpanded = card.classList.contains('is-expanded');
-        disciplineCards.forEach(function (c) { c.classList.remove('is-expanded'); });
-        if (!isExpanded) {
-          card.classList.add('is-expanded');
-        }
-      }
-    });
-  });
-
   // Team Dropdown Toggle (Show 3 default, expand remaining 1)
   var toggleTeamBtn = document.getElementById('toggleTeamBtn');
   var teamDropdownWrap = document.getElementById('teamDropdownWrap');
