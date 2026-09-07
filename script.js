@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (toggleTeamText) {
         toggleTeamText.textContent = isExpanded
           ? 'Show Less Team Members'
-          : 'View Remaining Team Members (4)';
+          : 'View Remaining Team Member (1)';
       }
     });
   }
