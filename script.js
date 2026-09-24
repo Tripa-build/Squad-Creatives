@@ -460,6 +460,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ==========================================================================
+  // 7. VIEWPORT MONITOR (MOBILE BLOCKER INFO)
+  // ==========================================================================
+  const detectedViewportInfo = document.getElementById('detectedViewportInfo');
+  function updateViewportInfo() {
+    if (detectedViewportInfo) {
+      detectedViewportInfo.textContent = `${window.innerWidth}px width (${window.innerWidth < 1024 ? 'Mobile/Tablet' : 'Desktop'})`;
+    }
+  }
+
+  updateViewportInfo();
+  window.addEventListener('resize', updateViewportInfo);
+
   // Initial Icon Render
   initIcons();
 
