@@ -34,7 +34,9 @@
 }
 
 /* Reset & Base Setup */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -70,7 +72,8 @@ button {
   background: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -81,7 +84,8 @@ img {
 }
 
 /* Lucide Icons Helper Styles */
-[data-lucide], svg.lucide {
+[data-lucide],
+svg.lucide {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -304,7 +308,7 @@ header {
   opacity: 0.65;
   pointer-events: none;
   z-index: 1;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
 }
 
 .hero-top-meta {
@@ -314,7 +318,8 @@ header {
   margin-bottom: 30px;
 }
 
-.meta-left-group, .meta-right-group {
+.meta-left-group,
+.meta-right-group {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -360,7 +365,7 @@ header {
   text-transform: uppercase;
   margin-bottom: 40px;
   color: #ffffff;
-  text-shadow: 0 0 30px rgba(0,0,0,0.8);
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
 }
 
 .hero-cta-row {
@@ -755,8 +760,13 @@ header {
 }
 
 @keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* Built To Stand Out (Stats Section) */
@@ -1002,9 +1012,17 @@ header {
   margin-bottom: 8px;
 }
 
-.terminal-line.cmd { color: #ffffff; }
-.terminal-line.status { color: #00FF66; }
-.terminal-line.exec { color: var(--text-muted); }
+.terminal-line.cmd {
+  color: #ffffff;
+}
+
+.terminal-line.status {
+  color: #00FF66;
+}
+
+.terminal-line.exec {
+  color: var(--text-muted);
+}
 
 .deliverables-card {
   background: var(--bg-card);
@@ -1483,6 +1501,7 @@ footer {
 
 /* Mobile Responsive */
 @media (max-width: 1024px) {
+
   .principles-grid,
   .standout-grid,
   .product-showcase-panel,
@@ -1589,7 +1608,11 @@ footer {
 .modal-container::-webkit-scrollbar {
   width: 4px;
 }
-.modal-container::-webkit-scrollbar-track { background: transparent; }
+
+.modal-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .modal-container::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
